@@ -14,3 +14,7 @@
     /* background: #afa; */
     border-color: #0f0;
 }
+
+.avatar-preview:hover {
+  cursor: pointer;
+}

@@ -15,16 +15,21 @@ function readURL(input, ind) {
     }
 }
 
-function onUpload(ind) {
-    readURL(this, ind + 1);
+function onUpload(ind, input) {
+    readURL(input, ind + 1);
     $($('.avatar-preview')[ind]).addClass('uploaded');
 }
 
 $("#imageUpload1").change(function() {
-    onUpload(0);
+    onUpload(0, this);
 });
 $("#imageUpload2").change(function() {
-    onUpload(1);
+    onUpload(1, this);
 });
 
-// alert("hello");
+$(".avatar-preview").each(function (ind) {
+    var elem = $(this);
+    elem.click(function() {
+        $("#imageUpload" + (ind + 1)).click();
+    });
+});

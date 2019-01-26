@@ -33,6 +33,7 @@ $(document).ready(function() {
             var reader = new FileReader();
             reader.onload = function (e) {
                 setPreview(e.target.result, index + 1);
+                // document.getElementById("imageUpload1").setAttribute("value", e.target.result);
                 // $('#imagePreview1').attr('src', e.target.result);
                     // $('#imagePreview' + (index + 1)).attr('style', 'background-image: url("' + e.target.result + '");');
             }
