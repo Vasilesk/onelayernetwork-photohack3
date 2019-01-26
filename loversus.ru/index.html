@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>loVErsus</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="/preview/css/style.css">
+  <link rel="stylesheet" href="/heartsbg/css/hearts.css">
+  <link rel="stylesheet" href="/heartbutton/css/style.css">
+
+  <!-- <link rel="stylesheet" href="/beauty/style.css"> -->
+
+</head>
+
+<body class="bg_heart">
+<!-- <body> -->
+  <div class="container">
+    <h1>загрузи фотки
+        <small>обе, плез</small>
+    </h1>
+    <div class="row">
+        <div class="col-md-5">
+            <div class="avatar-upload">
+                <div class="avatar-edit">
+                    <input type='file' id="imageUpload1" accept=".png, .jpg, .jpeg" />
+                    <label for="imageUpload1"></label>
+                </div>
+                <div class="avatar-preview">
+                    <div id="imagePreview1" style="background-image: url(/static/person.png);">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-2">
+
+            <span style="display: flex;justify-content: center;">Click heart below!</span>
+
+            <span class="centerbutton">
+                <input id="toggle-heart" type="checkbox" class="triggermodal"/>
+                <label for="toggle-heart" aria-label="like">❤</label>
+            </span>
+
+            <!-- <span class="" data-izimodal-open="modal-copyright"><a href="#modal-copyright">Click</a></span> -->
+
+        </div>
+
+        <div class="col-md-5">
+            <div class="avatar-upload">
+                <div class="avatar-edit">
+                    <input type='file' id="imageUpload2" accept=".png, .jpg, .jpeg" />
+                    <label for="imageUpload2"></label>
+                </div>
+                <div class="avatar-preview">
+                    <div id="imagePreview2" style="background-image: url(/static/person.png);">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+
+  <script  src="/preview/js/index.js"></script>
+  <script  src="/heartsbg/js/hearts.js"></script>
+  <!-- <script src="/beauty/index.js"></script> -->
+
+  <!-- Modal -->
+  <script src="/modal/js/modernizr.custom.js"></script>
+  <script src="/modal/js/toucheffects.js"></script>
+  <link rel="stylesheet" type="text/css" href="/modal/css/iziModal.min.css" />
+  <script src="/modal/js/iziModal.min.js"></script>
+  <script type="text/javascript">
+  $( document ).ready(function() {
+    $("#modal-copyright").iziModal({fullscreen: false, autoOpen: false, headerColor: "rgb(136, 160, 185);", padding: "10px"});
+    $(document).on('click', '.triggermodal', function (event) {
+    // event.preventDefault();
+    window.setTimeout(function() {
+        $('#modal-copyright').iziModal('open');
+    }, 1000);
+    });
+    });
+  </script>
+
+  <div id="modal-copyright"
+      class="iziModal"
+      style="display: none;"
+      data-izimodal-title="Титул гифки"
+      data-izimodal-subtitle="Сабтитул">
+          гифочка
+    </div>
+  <!-- Modal ends -->
+
+</body>
+</html>
