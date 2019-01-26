@@ -1,22 +1,23 @@
-function setPreview(data, ind) {
-    var elem = $('#imagePreview' + ind);
+function setImg(data, ind) {
+    var elem = $('#imagePreview' + (ind + 1));
     elem.css('background-image', 'url('+ data +')');
     elem.hide();
     elem.fadeIn(650);
+    window.images[ind] = data;
 }
 
 function readURL(input, ind) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
         reader.onload = function(e) {
-            setPreview(e.target.result, ind);
+            setImg(e.target.result, ind);
         }
         reader.readAsDataURL(input.files[0]);
     }
 }
 
 function onUpload(ind, input) {
-    readURL(input, ind + 1);
+    readURL(input, ind);
     $($('.avatar-preview')[ind]).addClass('uploaded');
 }
 
@@ -32,4 +33,8 @@ $(".avatar-preview").each(function (ind) {
     elem.click(function() {
         $("#imageUpload" + (ind + 1)).click();
     });
+});
+
+$(document).ready(function () {
+    window.images = [null, null];
 });
