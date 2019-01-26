@@ -1,20 +1,30 @@
+function setPreview(data, ind) {
+    var elem = $('#imagePreview' + ind);
+    elem.css('background-image', 'url('+ data +')');
+    elem.hide();
+    elem.fadeIn(650);
+}
+
 function readURL(input, ind) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
         reader.onload = function(e) {
-            $('#imagePreview' + ind).css('background-image', 'url('+e.target.result +')');
-            $('#imagePreview' + ind).hide();
-            $('#imagePreview' + ind).fadeIn(650);
+            setPreview(e.target.result, ind);
         }
         reader.readAsDataURL(input.files[0]);
     }
 }
 
+function onUpload(ind) {
+    readURL(this, ind + 1);
+    $($('.avatar-preview')[ind]).addClass('uploaded');
+}
+
 $("#imageUpload1").change(function() {
-    readURL(this, 1);
+    onUpload(0);
 });
 $("#imageUpload2").change(function() {
-    readURL(this, 2);
+    onUpload(1);
 });
 
 // alert("hello");
