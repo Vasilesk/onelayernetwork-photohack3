@@ -1,20 +1,40 @@
+function setImg(data, ind) {
+    var elem = $('#imagePreview' + (ind + 1));
+    elem.css('background-image', 'url('+ data +')');
+    elem.hide();
+    elem.fadeIn(650);
+    window.images[ind] = data;
+}
+
 function readURL(input, ind) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
         reader.onload = function(e) {
-            $('#imagePreview' + ind).css('background-image', 'url('+e.target.result +')');
-            $('#imagePreview' + ind).hide();
-            $('#imagePreview' + ind).fadeIn(650);
+            setImg(e.target.result, ind);
         }
         reader.readAsDataURL(input.files[0]);
     }
 }
 
+function onUpload(ind, input) {
+    readURL(input, ind);
+    $($('.avatar-preview')[ind]).addClass('uploaded');
+}
+
 $("#imageUpload1").change(function() {
-    readURL(this, 1);
+    onUpload(0, this);
 });
 $("#imageUpload2").change(function() {
-    readURL(this, 2);
+    onUpload(1, this);
 });
 
-// alert("hello");
+$(".avatar-preview").each(function (ind) {
+    var elem = $(this);
+    elem.click(function() {
+        $("#imageUpload" + (ind + 1)).click();
+    });
+});
+
+$(document).ready(function () {
+    window.images = [null, null];
+});

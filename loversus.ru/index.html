@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/preview/css/style.css">
   <link rel="stylesheet" href="/heartsbg/css/hearts.css">
   <link rel="stylesheet" href="/heartbutton/css/style.css">
+  <link rel="stylesheet" href="/dragndrop/style.css">
 
   <!-- <link rel="stylesheet" href="/beauty/style.css"> -->
 
@@ -26,6 +27,7 @@
     <h1>загрузи фотки
         <small>обе, плез</small>
     </h1>
+
     <div class="row">
         <div class="col-md-5">
             <div class="avatar-upload">
@@ -49,7 +51,7 @@
                 <label for="toggle-heart" aria-label="like">❤</label>
             </span>
 
-            <!-- <span class="" data-izimodal-open="modal-copyright"><a href="#modal-copyright">Click</a></span> -->
+            <!-- <span class="" data-izimodal-open="winmodal"><a href="#winmodal">Click</a></span> -->
 
         </div>
 
@@ -76,6 +78,7 @@
 
   <script  src="/preview/js/index.js"></script>
   <script  src="/heartsbg/js/hearts.js"></script>
+  <script src="/dragndrop/index.js"></script>
   <!-- <script src="/beauty/index.js"></script> -->
 
   <!-- Modal -->
@@ -85,22 +88,26 @@
   <script src="/modal/js/iziModal.min.js"></script>
   <script type="text/javascript">
   $( document ).ready(function() {
-    $("#modal-copyright").iziModal({fullscreen: false, autoOpen: false, headerColor: "rgb(136, 160, 185);", padding: "10px"});
+    $("#winmodal").iziModal({fullscreen: false, autoOpen: false, headerColor: "rgb(136, 160, 185);", padding: "10px"});
     $(document).on('click', '.triggermodal', function (event) {
     // event.preventDefault();
     window.setTimeout(function() {
-        $('#modal-copyright').iziModal('open');
+        $('#winmodal').iziModal('open');
+        // window.images processing example
+        $('#img0').attr('src', window.images[0]);
+        $('#img1').attr('src', window.images[1]);
     }, 1000);
     });
     });
   </script>
 
-  <div id="modal-copyright"
+  <div id="winmodal"
       class="iziModal"
       style="display: none;"
       data-izimodal-title="Титул гифки"
       data-izimodal-subtitle="Сабтитул">
-          гифочка
+          <img src="" id="img0" width="100">
+          <img src="" id="img1" width="100">
     </div>
   <!-- Modal ends -->
 

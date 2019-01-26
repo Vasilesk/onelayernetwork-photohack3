@@ -1,0 +1,20 @@
+.avatar-preview.hover {
+    /* background: #ddd; */
+    border-color: #ffed80 !important;
+    /* border: 6px dotted #000000; */
+
+}
+
+/* .avatar-preview.error {
+    background: #faa;
+    border-color: #f00;
+} */
+
+.avatar-preview.uploaded {
+    /* background: #afa; */
+    border-color: #0f0;
+}
+
+.avatar-preview:hover {
+  cursor: pointer;
+}
