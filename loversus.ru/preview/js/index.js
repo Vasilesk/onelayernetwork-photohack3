@@ -3,11 +3,11 @@ function setImg(data, ind) {
     elem.css('background-image', 'url('+ data +')');
     elem.hide();
     elem.fadeIn(650);
-    window.images[ind] = data;
 }
 
 function readURL(input, ind) {
     if (input.files && input.files[0]) {
+        window.images[ind] = input.files[0];
         var reader = new FileReader();
         reader.onload = function(e) {
             setImg(e.target.result, ind);
@@ -21,6 +21,7 @@ function onUpload(ind, input) {
     $($('.avatar-preview')[ind]).addClass('uploaded');
 }
 
+// setting preview and data
 $("#imageUpload1").change(function() {
     onUpload(0, this);
 });

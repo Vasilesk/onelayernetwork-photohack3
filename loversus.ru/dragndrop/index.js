@@ -32,12 +32,13 @@ $(document).ready(function() {
 
             var reader = new FileReader();
             reader.onload = function (e) {
+                // setting preview
                 setImg(e.target.result, index);
-                // document.getElementById("imageUpload1").setAttribute("value", e.target.result);
-                // $('#imagePreview1').attr('src', e.target.result);
-                    // $('#imagePreview' + (index + 1)).attr('style', 'background-image: url("' + e.target.result + '");');
             }
             reader.readAsDataURL(file);
+
+            // setting data
+            window.images[0] = file;
         };
 
     });
