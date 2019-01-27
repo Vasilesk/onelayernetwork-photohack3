@@ -111,12 +111,17 @@ def photoupload():
         url = "https://loversus.ru/tmp/{}.png".format(hunterized_id)
 
         url_segm = segmentation(url)
+        if url_segm is None:
+            return json.dumps({'status': 'fail', 'desc': 'no segmentation possible'})
+
         store(url_segm, filename)
 
         # call opencv here for filename
         #
 
-        url_new_hunter = vampire_pipeline(url)
+        url_new_hunter, err_step = vampire_pipeline(url_segm)
+
+
         filename_processed = "../processed/{}.png".format(hunterized_id)
         store(url_new_hunter, filename_processed)
         url_new_hunter = "https://loversus.ru/processed/{}.png".format(hunterized_id)

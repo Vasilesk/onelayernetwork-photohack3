@@ -38,21 +38,21 @@ def segmentation(url):
 
 def vampire_pipeline(url):
     templates = [
-        "E82456F0-349B-7724-C9FF-6DE46815CBA7", # segm
         "47C2140E-7921-49B4-6957-18A0264A00B5", # teeth
         "7BDF43DF-DDB9-1A94-393D-F4071671F620", # eyes
         "27AD8C60-16BE-5EC4-FDD3-9F658D461EE4", # color
     ]
-
+    err_step = None
     for i, templ in enumerate(templates):
         url_new = apply_template(templ, url, False)
         if re.match(regex_url, url_new) is None:
             print("stopped on step", i)
+            err_step = i
             break
         else:
             url = url_new
 
-    return url
+    return url, err_step
 
 def store(url, local):
     urllib.request.urlretrieve(url, local)
