@@ -2,6 +2,16 @@
 # -*- coding: utf8 -*-
 
 import requests
+import urllib.request
+
+import re
+regex_url = re.compile(
+        r'^(?:http|ftp)s?://' # http:// or https://
+        r'(?:(?:[A-Z0-9](?:[A-Z0-9-]{0,61}[A-Z0-9])?\.)+(?:[A-Z]{2,6}\.?|[A-Z0-9-]{2,}\.?)|' #domain...
+        r'localhost|' #localhost...
+        r'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})' # ...or ip
+        r'(?::\d+)?' # optional port
+        r'(?:/?|[/?]\S+)$', re.IGNORECASE)
 
 def apply_template(template_name, url_clear, anim = False):
     post_url = 'http://api-hack.photolab.me/template_process.php'
@@ -20,7 +30,11 @@ def apply_template(template_name, url_clear, anim = False):
 
 def segmentation(url):
     templ = "E82456F0-349B-7724-C9FF-6DE46815CBA7"
-    return apply_template(templ, url, False)
+    url_new = apply_template(templ, url, False)
+    if re.match(regex_url, url_new) is None:
+        return None
+    else:
+        return url_new
 
 def vampire_pipeline(url):
     templates = [
@@ -30,7 +44,15 @@ def vampire_pipeline(url):
         "27AD8C60-16BE-5EC4-FDD3-9F658D461EE4", # color
     ]
 
-    for templ in templates:
-        url = apply_template(templ, url, False)
+    for i, templ in enumerate(templates):
+        url_new = apply_template(templ, url, False)
+        if re.match(regex_url, url_new) is None:
+            print("stopped on step", i)
+            break
+        else:
+            url = url_new
 
     return url
+
+def store(url, local):
+    urllib.request.urlretrieve(url, local)

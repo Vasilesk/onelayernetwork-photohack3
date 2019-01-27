@@ -22,7 +22,7 @@ h1 small {
 .avatar-upload {
   position: relative;
   max-width: 205px;
-  margin: 50px auto;
+  /* margin: 50px auto; */
 }
 .avatar-upload .avatar-edit {
   position: absolute;

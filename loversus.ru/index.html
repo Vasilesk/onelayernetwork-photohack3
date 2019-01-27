@@ -13,22 +13,22 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
   <link rel="stylesheet" href="/preview/css/style.css">
-  <link rel="stylesheet" href="/heartsbg/css/hearts.css">
-  <link rel="stylesheet" href="/heartbutton/css/style.css">
   <link rel="stylesheet" href="/dragndrop/style.css">
 
-  <!-- <link rel="stylesheet" href="/beauty/style.css"> -->
 
 </head>
 
-<body class="bg_heart">
-<!-- <body> -->
+<body>
   <div class="container">
-    <h1>загрузи фотки
-        <small>обе, плез</small>
+    <h1>загрузи фотку
+        <small>плез</small>
     </h1>
 
     <div class="row">
+        <div class="col-md-5">
+            <img id="img-hunter" src="/static/hunter.png" class="img-fluid" alt="Responsive image">
+        </div>
+
         <div class="col-md-5">
             <div class="avatar-upload">
                 <div class="avatar-edit">
@@ -43,29 +43,7 @@
         </div>
 
         <div class="col-md-2">
-
-            <span style="display: flex;justify-content: center;">Click heart below!</span>
-
-            <span class="centerbutton">
-                <input id="toggle-heart" type="checkbox" class="triggermodal"/>
-                <label for="toggle-heart" aria-label="like">❤</label>
-            </span>
-
-            <!-- <span class="" data-izimodal-open="winmodal"><a href="#winmodal">Click</a></span> -->
-
-        </div>
-
-        <div class="col-md-5">
-            <div class="avatar-upload">
-                <div class="avatar-edit">
-                    <input type='file' id="imageUpload2" accept=".png, .jpg, .jpeg" />
-                    <label for="imageUpload2"></label>
-                </div>
-                <div class="avatar-preview">
-                    <div id="imagePreview2" style="background-image: url(/static/person.png);">
-                    </div>
-                </div>
-            </div>
+            <button class="triggermodal">кнопка</button>
         </div>
     </div>
 </div>
@@ -77,10 +55,8 @@
 
 
   <script  src="/preview/js/index.js"></script>
-  <script  src="/heartsbg/js/hearts.js"></script>
   <script src="/dragndrop/index.js"></script>
   <script src="/frontapp/script.js"></script>
-  <!-- <script src="/beauty/index.js"></script> -->
 
   <!-- Modal -->
   <script src="/modal/js/modernizr.custom.js"></script>
@@ -93,10 +69,6 @@
     $(document).on('click', '.triggermodal', function (event) {
         processPhoto();
         // event.preventDefault();
-        window.setTimeout(function() {
-            $('#winmodal').iziModal('open');
-            // window.images processing
-        }, 1000);
     });
   });
   </script>
@@ -106,8 +78,7 @@
       style="display: none;"
       data-izimodal-title="Титул гифки"
       data-izimodal-subtitle="Сабтитул">
-          <img src="" id="img0" width="100">
-          <img src="" id="img1" width="100">
+          <img src="" id="img-modal" width="100">
     </div>
   <!-- Modal ends -->
 

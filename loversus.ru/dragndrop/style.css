@@ -1,17 +1,13 @@
 .avatar-preview.hover {
-    /* background: #ddd; */
     border-color: #ffed80 !important;
-    /* border: 6px dotted #000000; */
 
 }
 
-/* .avatar-preview.error {
-    background: #faa;
+.avatar-preview.error {
     border-color: #f00;
-} */
+}
 
 .avatar-preview.uploaded {
-    /* background: #afa; */
     border-color: #0f0;
 }
 
