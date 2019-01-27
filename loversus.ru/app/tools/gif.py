@@ -140,7 +140,8 @@ def gifer(vampire, clean, vampirized, forest, out_path):
     mask_1 = cv2.threshold(mask_1,127,255,cv2.THRESH_BINARY)[1]
     mask_2 = cv2.threshold(mask_2,127,255,cv2.THRESH_BINARY)[1]
 
-    background = cv2.imread(forest)
+    # background = cv2.imread(forest)
+    background = cv2.resize(cv2.imread(forest), (800,600))
 
     create_gif(background, lover_1, lover_2, vampire_2, mask_1, mask_2, mask_3, gif_path)
 

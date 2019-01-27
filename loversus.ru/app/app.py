@@ -83,7 +83,7 @@ def bitecount():
         return json.dumps({'status': 'fail', 'desc': 'hunter id incorrect'})
 
     if hunter_id < 1:
-        hunter_id = 1
+        hunter_id = 42
 
     _, count = get_or_create_id_count(hunter_id)
 
