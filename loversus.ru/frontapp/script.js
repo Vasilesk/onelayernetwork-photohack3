@@ -46,8 +46,27 @@ function okCallback(dataStr) {
     }
 }
 
+function fetchCounter() {
+    let request = new XMLHttpRequest();
+    request.onreadystatechange = function() {
+       if (request.readyState == 4 && request.status == 200)
+       {
+           var data = JSON.parse(request.responseText);
+           if (data.status == "ok") {
+               $("#bitecounter").text(data.count);
+           }
+       }
+    };
+    let formData = new FormData();
+
+    formData.append("hunter_id", window.hunterId);
+    request.open("POST", '/app/bitecount');
+    request.send(formData);
+}
+
 $(document).ready(function() {
     window.hunterId = getHunterId();
+    fetchCounter();
 
     $("#img-hunter").attr("src", "https://loversus.ru/processed/"+window.hunterId+".png")
 });

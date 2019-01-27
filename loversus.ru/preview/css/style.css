@@ -21,7 +21,7 @@ h1 small {
 }
 .avatar-upload {
   position: relative;
-  max-width: 205px;
+  max-width: 330px;
   /* margin: 50px auto; */
 }
 .avatar-upload .avatar-edit {
@@ -62,8 +62,8 @@ h1 small {
   margin: auto;
 }
 .avatar-upload .avatar-preview {
-  width: 192px;
-  height: 192px;
+  width: 300px;
+  height: 300px;
   position: relative;
   border-radius: 100%;
   border: 6px solid #F8F8F8;

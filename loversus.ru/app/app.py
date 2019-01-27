@@ -72,6 +72,19 @@ def allowed_file(filename):
 def hello():
     return "app"
 
+@application.route('/app/bitecount', methods=['POST'])
+def bitecount():
+    if 'hunter_id' not in request.form:
+        return json.dumps({'status': 'fail', 'desc': 'No hunter id'})
+    try:
+        hunter_id = int(request.form['hunter_id'])
+    except:
+        return json.dumps({'status': 'fail', 'desc': 'hunter id incorrect'})
+
+    _, count = get_or_create_id_count(hunter_id)
+
+    return json.dumps({'status': 'ok', 'count': count})
+
 
 @application.route('/app/photoupload', methods=['POST'])
 def photoupload():
