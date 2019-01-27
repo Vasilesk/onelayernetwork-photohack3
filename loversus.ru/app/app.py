@@ -9,6 +9,7 @@ import sqlite3
 from PIL import Image
 
 from tools.photolab import vampire_pipeline, segmentation, store
+from tools.gif import gifer
 
 application = Flask(__name__)
 application.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
@@ -81,6 +82,9 @@ def bitecount():
     except:
         return json.dumps({'status': 'fail', 'desc': 'hunter id incorrect'})
 
+    if hunter_id < 1:
+        hunter_id = 1
+
     _, count = get_or_create_id_count(hunter_id)
 
     return json.dumps({'status': 'ok', 'count': count})
@@ -129,17 +133,23 @@ def photoupload():
 
         store(url_segm, filename)
 
-        # call opencv here for filename
-        #
 
         url_new_hunter, err_step = vampire_pipeline(url_segm)
-
 
         filename_processed = "../processed/{}.png".format(hunterized_id)
         store(url_new_hunter, filename_processed)
         url_new_hunter = "https://loversus.ru/processed/{}.png".format(hunterized_id)
+        # call opencv here for filename
+        #
+        vampire = "../processed/{}.png".format(hunter_id)
+        clean = "../tmp/{}.png".format(hunterized_id)
+        vampirized = "../processed/{}.png".format(hunterized_id)
+        forest = "../static/forest.jpg"
+        out_gif = "../gifs/{}.gif".format(hunterized_id)
 
-    return json.dumps({'status': 'ok', 'hunterized': hunterized_id, 'url': url_new_hunter})
+        gifer(vampire, clean, vampirized, forest, out_gif)
+
+        return json.dumps({'status': 'ok', 'hunterized': hunterized_id, 'url': "https://loversus.ru/gifs/{}.gif".format(hunterized_id)})
 
 
 @application.route('/flask_api/<path:secret>', methods=['POST'])

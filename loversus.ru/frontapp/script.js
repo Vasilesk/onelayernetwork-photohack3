@@ -30,7 +30,9 @@ function okCallback(dataStr) {
     var data = JSON.parse(dataStr);
     console.log(data);
     if (data.status == "ok") {
-        $("#img-modal").attr("src", data.url);
+        $("#victimlink").attr("href", "https://loversus.ru/"+data.hunterized);
+        $("#img-modal").attr("src", "https://loversus.ru/gifs/"+data.hunterized+".gif");
+
         $(".before-getting").hide();
         $(".after-getting").show();
 
@@ -71,5 +73,8 @@ $(document).ready(function() {
     window.hunterId = getHunterId();
     fetchCounter();
 
-    $("#img-hunter").attr("src", "https://loversus.ru/processed/"+window.hunterId+".png")
+    $("#img-hunter").attr("src", "https://loversus.ru/processed/"+window.hunterId+".png");
+    window.setTimeout(function () {
+        $("#img-hunter").show();
+    }, 500);
 });
