@@ -23,7 +23,7 @@ def paste_img(background, img, mask):
     
     return overlay
 
-def overlay_images(background, lover_1, lover_2, mask_1, mask_2, dist_c = 100):
+def overlay_images(background, lover_1, lover_2, vampire_2, mask_1, mask_2, dist_c = 100):
     h, w, _ = background.shape
     overlay = background.copy()
     
@@ -65,7 +65,7 @@ def overlay_images(background, lover_1, lover_2, mask_1, mask_2, dist_c = 100):
     
     return overlay
 
-def create_gif(background, lover_1, lover_2, mask_1, mask_2, gif_path):
+def create_gif(background, lover_1, lover_2, vampire_2, mask_1, mask_2, gif_path):
     h, w, _ = background.shape
     
     images = []
@@ -77,7 +77,7 @@ def create_gif(background, lover_1, lover_2, mask_1, mask_2, gif_path):
     
     
     for i in range(n_steps):
-        img = overlay_images(background, lover_1, lover_2, mask_1, mask_2, dists[i])
+        img = overlay_images(background, lover_1, lover_2, vampire_2, mask_1, mask_2, dists[i])
         if i>7:
             alpha = 1 - (i - 7)/8
             img = cv2.addWeighted(img, alpha, white, 1 - alpha, 0)
@@ -90,7 +90,7 @@ def create_gif(background, lover_1, lover_2, mask_1, mask_2, gif_path):
     for i in range(4):
         images.append(cv2.addWeighted(images[-1], 0.5, white, 0.5, 0))
 
-    img = paste_img(white, lover_2, mask_2)
+    img = paste_img(white, vampire_2, mask_2)
     
     for i in range(3):
         images.append(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
