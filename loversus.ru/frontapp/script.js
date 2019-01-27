@@ -26,6 +26,18 @@ function processPhoto() {
     }, 1000);
 }
 
+function okCallback(dataStr) {
+    var data = JSON.parse(dataStr);
+    console.log(data);
+    if (data.status == "ok") {
+        $("#img-modal").attr("src", data.url);
+        $(".before-getting").hide();
+        $(".after-getting").show();
+
+        // $("#img-modal").attr("src", "https://loversus.ru/processed/"+data.hunterized+".png");
+    }
+}
+
 function getHunterId() {
     var url = document.createElement('a');
     url.href = window.location.href;
@@ -35,15 +47,6 @@ function getHunterId() {
     }
     // return parseInt(url.pathname.substring(1));
     return url.pathname.substring(1);
-}
-
-function okCallback(dataStr) {
-    var data = JSON.parse(dataStr);
-    console.log(data);
-    if (data.status == "ok") {
-        $("#img-modal").attr("src", data.url);
-        // $("#img-modal").attr("src", "https://loversus.ru/processed/"+data.hunterized+".png");
-    }
 }
 
 function fetchCounter() {
