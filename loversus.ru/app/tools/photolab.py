@@ -47,9 +47,8 @@ def vampire_pipeline(url):
     for i, templ in enumerate(templates):
         url_new = apply_template(templ, url, False)
         if re.match(regex_url, url_new) is None:
-            print("stopped on step", i)
+            print("error on step", i)
             err_step = i
-            break
         else:
             url = url_new
 

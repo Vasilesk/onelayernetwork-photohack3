@@ -45,7 +45,7 @@ function getHunterId() {
     url.href = window.location.href;
 
     if (url.pathname.length == 1) {
-        return "0";
+        return "42";
     }
     // return parseInt(url.pathname.substring(1));
     return url.pathname.substring(1);

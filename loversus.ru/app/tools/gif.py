@@ -72,7 +72,8 @@ def create_gif(background, lover_1, lover_2, vampire_2, mask_1, mask_2, mask_3, 
     images = []
     n_steps = 15
 
-    white = np.full(background.shape, 255).astype(np.uint8)
+    # white = np.full(background.shape, 255).astype(np.uint8)
+    white = cv2.resize(cv2.imread("../static/texture.jpg"), (800,600))
 
     dists = (np.logspace(2, 3, num=n_steps)/1000 * w//2 + 200).astype(int) [::-1]
 
@@ -86,10 +87,14 @@ def create_gif(background, lover_1, lover_2, vampire_2, mask_1, mask_2, mask_3, 
         images.append(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
 
 
-    white = np.full(background.shape, 255).astype(np.uint8)
+    # white = np.full(background.shape, 255).astype(np.uint8)
+    white = cv2.resize(cv2.imread("../static/texture.jpg"), (800,600))
+
+    # for i in range(4):
+    #     images.append(cv2.addWeighted(images[-1], 0.5, white, 0.5, 0))
 
     for i in range(4):
-        images.append(cv2.addWeighted(images[-1], 0.5, white, 0.5, 0))
+        images.append(cv2.addWeighted(images[-1], 0.5, cv2.cvtColor(white, cv2.COLOR_BGR2RGB), 0.5, 0))
 
     img = paste_img(white, vampire_2, mask_3)
 
